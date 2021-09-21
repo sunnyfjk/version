@@ -3,7 +3,7 @@
 # @Email:  sunnyfjk@gmail.com
 # @Filename: Makefile
 # @Last modified by:   fjk
-# @Last modified time: 2021-07-04T21:35:07+08:00
+# @Last modified time: 2021-09-21T13:17:21+08:00
 # @License: GPL
 
 TAGET 		=	demo
@@ -12,14 +12,14 @@ OBJ_O 		=	${patsubst %.c,%.o,$(SRC)}
 OBJ_D 		=	${patsubst %.c,%.d,$(SRC)}
 PWD		=	$(shell pwd)
 INCLUDE		=	-I$(PWD)/include
-COMPILE_TIME 	=	$(shell date +"%Y-%M-%d %H:%M:%S")
+COMPILE_TIME 	=	$(shell date +"%Y-%m-%d %H:%M:%S")
 GIT_REVISION 	=	$(shell git show -s --pretty=format:%h)
 all: clean version lib$(TAGET).so
 
 lib$(TAGET).so:$(OBJ_O)
 	gcc -fPIC -shared  $^ -o $@ $(LIBS)
 .c.o:
-	gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<" $(INCLUDE) 
+	gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<" $(INCLUDE)
 clean:
 	rm -rf $(OBJ_O) $(OBJ_D) lib$(TAGET).so
 version:
@@ -29,4 +29,5 @@ version:
 	@echo '#define BUILD_VERSION_INFO "$(COMPILE_TIME)" ' >> $(PWD)/include/version.h
 	@echo '#define VERSION_INFO "$(GIT_REVISION)" ' >> $(PWD)/include/version.h
 	@echo '#endif' >> $(PWD)/include/version.h
-.PHONY:all clean version 
+	
+.PHONY:all clean version lib$(TAGET).so

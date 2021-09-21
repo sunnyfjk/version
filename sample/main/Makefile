@@ -14,6 +14,7 @@ INCLUDE		=	-I$(PWD)/../../include/
 LD_LIBRARY_PATH	= 	-L$(PWD)/../../
 LD_LIBRARY	=	-ldemo
 
+all:clean $(TAGET)
 
 $(TAGET):$(OBJ_O)
 	make -C $(PWD)/../../
@@ -24,3 +25,4 @@ $(TAGET):$(OBJ_O)
 clean:
 	make -C $(PWD)/../../ clean
 	rm -rf $(OBJ_O) $(OBJ_D) $(TAGET)
+.PHONY:all clean $(TAGET)
