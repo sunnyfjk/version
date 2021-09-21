@@ -3,16 +3,16 @@
 # @Email:  sunnyfjk@gmail.com
 # @Filename: Makefile
 # @Last modified by:   fjk
-# @Last modified time: 2021-07-04T21:29:00+08:00
+# @Last modified time: 2021-09-21T22:50:09+08:00
 # @License: GPL
-TAGET 		=	main
-SRC		=	$(shell find ./ -name "*.c")
-OBJ_O 		=	${patsubst %.c,%.o,$(SRC)}
-OBJ_D 		=	${patsubst %.c,%.d,$(SRC)}
-PWD		=	$(shell pwd)
-INCLUDE		=	-I$(PWD)/../../include/
-LD_LIBRARY_PATH	= 	-L$(PWD)/../../
-LD_LIBRARY	=	-ldemo
+TAGET 					=	main
+SRC							=	$(shell find ./ -name "*.c")
+OBJ_O 					=	${patsubst %.c,%.o,$(SRC)}
+OBJ_D 					=	${patsubst %.c,%.d,$(SRC)}
+PWD							=	$(shell pwd)
+INCLUDE					=	-I$(PWD)/../../include/
+LD_LIBRARY_PATH	= -L$(PWD)/../../
+LD_LIBRARY			=	-ldemo
 
 all:clean $(TAGET)
 
